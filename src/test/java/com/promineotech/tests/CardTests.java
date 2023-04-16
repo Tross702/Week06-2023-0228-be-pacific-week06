@@ -14,21 +14,44 @@ class CardTests {
   @Test
   void constructor_ShouldTakeASuitAndFace() {
     // Arrange
+    Suit expectedSuit = Suit.HEART;
+    String expectedFace = "A";
     
     // Act/Invoke
+    Card card = new Card(expectedSuit, expectedFace);
     
     // Assert
-    fail("Not yet implemented");
+    assertThat(card.getFace()).isEqualTo(expectedFace);
+    assertThat(card.getSuit()).isEqualTo(expectedSuit);
+    
+    
   }
 
   @Test
-  void constructor_ShouldThrowErrorIfNoParametersProvided() {
-    // Arrange
+  void getSuit_WithCLUBSuitReturnsExpectedValue() {
+    //Arrange
+    Suit expectedSuit = Suit.CLUB;
+    Card card = new Card(expectedSuit, "A");
     
     // Act/Invoke
+    Suit value = card.getSuit();
+    
+    // Assert.
+    assertThat(value).isEqualTo(expectedSuit);
+   
+  }
+  @Test
+  void constructor_ShouldThrowErrorIfNoParametersProvided() {
+    // Arrange
+    String expectedFace = "Q";
+    Card card = new Card(Suit.DIAMOND, expectedFace);
+    
+    // Act/Invoke
+    String value = card.getFace();
     
     // Assert
-    fail("Not yet implemented");
+    
+    assertThat(value).isEqualTo(expectedFace);
   }
 
   @Test
@@ -55,22 +78,29 @@ class CardTests {
   void toString_WithKingHeartShouldReturnSuitSymbolAndFace() {
     // Arrange
     String expected = "♥K";
+    Card card = new Card(Suit.HEART, "K");
     
     // Act/Invoke
+    String value = card.toString();
     
     // Assert
-    fail("Not yet implemented");
+    assertThat(value).isEqualTo(expected);
+    
   }
   
   @Test
   void describe_WithAceSPADEShouldReturnAceOfSpades() {
     // Arrange
     String expected = "Ace of Spades";
+    Card card = new Card(Suit.SPADE, "A");
     
     // Act/Invoke
+    String value = card.describe();
+    
     
     // Assert
-    fail("Not yet implemented");
+    assertThat(value).isEqualTo(expected);
+    
   }
 
   @Test
